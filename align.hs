@@ -42,7 +42,7 @@ maxIndex d t = maybe 0 id $ do
 -- Take the delim and a line, producing a formatted line
 format :: Delim -> Int -> T.Text -> T.Text
 format (Delim d at buff) off line = maybe line id $ do
-    index <- headMay . fmap (T.length . fst) (T.breakOnAll d line)
+    index <- headMay . fmap (T.length . fst) $ T.breakOnAll d line
     let dLen            = T.length d
     let (left, right)   = (T.take index line, T.drop (index + dLen) line)
     let (sLeft, sRight) = (T.stripEnd left, T.stripStart right)
